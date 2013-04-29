@@ -1,4 +1,4 @@
-package cn.net.msg.model;
+package net.huosen.msg.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
-/*
- * 实体类，对应着数据库中的表t_demo
+/**
+ * @Description: 实体类，对应着数据库中的表t_demo
+ * @Author huozhicheng@gmail.com
+ * @Date 2013-4-29下午10:51:22
+ * @Version 1.0
  */
 @Component("user")
 @Entity

@@ -1,9 +1,14 @@
-package cn.net.msg.dao;
+package net.huosen.msg.dao;
 
 import java.util.List;
 
-import cn.net.msg.model.User;
-
+import net.huosen.msg.model.User;
+/**
+ * @Description: 用户Dao接口
+ * @Author huozhicheng@gmail.com
+ * @Date 2013-4-29下午10:50:03
+ * @Version 1.0
+ */
 public interface UserDao {
 
 	public  void insertUser(User user);

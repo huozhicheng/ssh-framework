@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
     <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
-  	<script type="text/javascript" src="<%=contextPath%>/js/jquery.min.js"></script>
+  	<script type="text/javascript" src="<%=contextPath%>/public/js/jquery-1.8.2.min.js"></script>
   	<script type="text/javascript" src="<%=contextPath%>/js/demo.js"></script>  
   </head>
 
@@ -31,7 +31,7 @@
 			</form>
 			</span>
 			<span>
-				<button class="btn" onclick="window.location.href='<%=contextPath%>/jsp/addpage.jsp'">add a user</button>
+				<button class="btn" onclick="window.location.href='<%=contextPath%>/addpage.jsp'">add a user</button>
 			</span>
 <br>
 <div align="center">

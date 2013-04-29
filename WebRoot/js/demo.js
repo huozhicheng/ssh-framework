@@ -17,7 +17,7 @@ function updateUser(obj){
 	var name=p.find("td[name='name']").text();
 	var sex=p.find("td[name='sex']").text();
 	var age=p.find("td[name='age']").text();
-	document.write("<form action='jsp/updatepage.jsp' method='post' name='formx1' style='display:none'>");
+	document.write("<form action='updatepage.jsp' method='post' name='formx1' style='display:none'>");
 	document.write("<input type=hidden name='user.id' value='"+id+"'>");
 	document.write("<input type=hidden name='user.name' value='"+name+"'>");
 	document.write("<input type=hidden name='user.sex' value='"+sex+"'>");

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 开发模式  详细错误提示 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 指定每次请求到达，重新加载资源文件 -->
+	<constant name="struts.i18n.reload" value="true" />
+	<!-- 指定每次配置文件更改后，自动重新加载 -->
+	<constant name="struts.configuration.xml.reload" value="true" />
+	
+	<package name="default" namespace="/" extends="struts-default">
+		<default-action-ref name="index" />
+		<!-- 全局的result -->
+        <global-results>
+            <result name="error">/error.jsp</result>
+            <result name="input">/error.jsp</result>
+        </global-results>
+		
+		<!-- 全局的异常  由name为error的result处理 -->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="error"/>
+        </global-exception-mappings>
+        
+        
+		<!-- 按名称搜索-->
+		<action name="search" class="userAction" method="findByName">
+			<result name="success">/welcome.jsp</result>
+		</action>
+		<!-- 下面三个action处理前台传过来的增删改请求，然后redirect回主页 -->
+		<action name="handleinseart" class="userAction" method="inseart">
+			<result name="success" type="redirect">/</result>
+		</action>
+		<action name="handleupdate" class="userAction" method="update">
+			<result name="success" type="redirect">/</result>
+		</action>
+		<action name="handledelete" class="userAction" method="delete">
+			<result name="success" type="redirect">/</result>
+		</action>
+		<action name="index" class="userAction" method="findAll">
+            <result>/welcome.jsp</result>
+        </action>
+	</package>
+	<include file="admin.xml"/>
+</struts>

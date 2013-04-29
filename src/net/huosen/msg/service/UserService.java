@@ -1,16 +1,19 @@
-package cn.net.msg.service;
+package net.huosen.msg.service;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import net.huosen.msg.dao.UserDao;
+import net.huosen.msg.model.User;
+
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import cn.net.msg.dao.UserDao;
-import cn.net.msg.model.User;
-/*
- * Service层，在此可以进行事物管理
+/**
+ * @Description: Service层，在此可以进行事物管理
+ * @Author huozhicheng@gmail.com
+ * @Date 2013-4-29下午10:51:54
+ * @Version 1.0
  */
 @Component("userService")
 public class UserService {

@@ -1,14 +1,17 @@
-package cn.net.msg.dao.impl;
+package net.huosen.msg.dao.impl;
 
 import java.util.List;
-
 import javax.annotation.Resource;
-
+import net.huosen.msg.dao.UserDao;
+import net.huosen.msg.model.User;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Component;
-
-import cn.net.msg.dao.UserDao;
-import cn.net.msg.model.User;
+/**
+ * @Description: 用户Dao实现
+ * @Author huozhicheng@gmail.com
+ * @Date 2013-4-29下午10:50:36
+ * @Version 1.0
+ */
 @Component("userDao")
 public class UserDaoImpl implements UserDao {
 	@Resource(name="hibernateTemplate")

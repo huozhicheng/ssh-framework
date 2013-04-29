@@ -1,21 +1,28 @@
-package cn.net.msg.action;
+package net.huosen.msg.action;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import cn.net.msg.model.User;
-import cn.net.msg.service.UserService;
+import net.huosen.msg.model.User;
+import net.huosen.msg.service.UserService;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.opensymphony.xwork2.ActionSupport;
-/*
- * 处理用户操作的Action类
+/**
+ * @Description: 处理用户操作的Action类
+ * @Author huozhicheng@gmail.com
+ * @Date 2013-4-29下午10:49:46
+ * @Version 1.0
  */
+
+//@Scope表示为每个Request创建新的Action，默认为单例
+@Scope("prototype")
+@Component("userAction")
 public class UserAction extends ActionSupport{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7574227471454774126L;
 	private User user;
 	private List<User> list;
@@ -33,7 +40,7 @@ public class UserAction extends ActionSupport{
 	}
 	
 	public String  findByName(){
-		setList(service.findByName(user.getName()));
+		list = service.findByName(user.getName());
 		return "success";
 	}
 	
@@ -43,7 +50,7 @@ public class UserAction extends ActionSupport{
 	}
 	
 	public String findAll(){
-		setList(service.findAll());
+		list = service.findAll();
 		return "success";
 	}
 	
@@ -58,10 +65,7 @@ public class UserAction extends ActionSupport{
 	public List<User> getList() {
 		return list;
 	}
-
-	public void setList(List<User> list) {
-		this.list = list;
-	}
+	
 	/*
 	 * 校验插入数据的操作
 	 */
