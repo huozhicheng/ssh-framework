@@ -17,7 +17,7 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 
-		<property name="url" value="jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_hblogs"/> 
+		<!-- <property name="url" value="jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_hblogs"/> 
 		<property name="username" value="yoj1ozm53w"/>
 		<property name="password" value="l5y0yzzlh5lmwjy5ll4hi5j2k4zzi1myy4j2kmi4"/>
 		<property name="maxWait"            value="1000" />
@@ -29,16 +29,16 @@
         <property name="numTestsPerEvictionRun"         value="20" />
         <property name="validationQuery"    value="SELECT 1 FROM DUAL" />
         <property name="removeAbandoned"    value="true" />
-        <property name="removeAbandonedTimeout"         value="180" />
+        <property name="removeAbandonedTimeout"         value="180" /> -->
 
-		<!-- <property name="url" value="jdbc:mysql://localhost:3306/framework?useUnicode=true&amp;characterEncoding=utf8"/> 
+		<property name="url" value="jdbc:mysql://localhost:3306/framework?useUnicode=true&amp;characterEncoding=utf8"/> 
 		<property name="username" value="root"/>
 		<property name="password" value="root"/>
 		<property name="initialSize" value="5"/>
 		<property name="maxActive" value="50"/>
 		<property name="maxIdle" value="10"/>
 		<property name="maxWait" value="20"/>
-		<property name="minIdle" value="1"/> -->
+		<property name="minIdle" value="1"/>
 	</bean>
 	
 	<!-- Hibernate3 Session Factory: 注意这里使用的是AnnotationSessionFactoryBean -->
@@ -52,7 +52,7 @@
 				<prop key="hibernate.format_sql">true</prop>
 			</props>
 		</property>
-		<!-- 这个属性指明了使用注释的持久类的包-->
+		<!-- 使用注解的持久类的包-->
 		<property name="packagesToScan">
 			<list>
 				<value>net.huosen.msg.model</value>
@@ -65,18 +65,30 @@
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	
+	<!-- 使用annotation 注入bean -->
+	<context:annotation-config></context:annotation-config>
+	<!-- 扫描bean的包路径 -->
+ 	<context:component-scan base-package="net.huosen.msg.*" />
+	
 	<!-- Transaction Manager 事务管理器-->
 	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	
-	<!-- Annotation Driver: 使用注释事务管理-->
-	<!-- 这里配置后将使用注释事务方式，不用再在这个XML文件中配置事务代理对象了 -->
-	<tx:annotation-driven transaction-manager="txManager"/>
-	
-	<!-- 这里配置后就不用再使用bean标签配置bean了 -->
-	<context:annotation-config></context:annotation-config>
-	<!-- 去哪个包扫描生成bean -->
- 	<context:component-scan base-package="net.huosen.msg.*" /> 
-	
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+  		<tx:attributes>
+  			<tx:method name="add*" propagation="REQUIRED"/>
+  			<tx:method name="insert*" propagation="REQUIRED"/>
+  			<tx:method name="save*" propagation="REQUIRED"/>
+  			<tx:method name="update*" propagation="REQUIRED"/>
+  			<tx:method name="edit*" propagation="REQUIRED"/>
+  			<tx:method name="delete*" propagation="REQUIRED"/>
+  			<tx:method name="remove*" propagation="REQUIRED"/>
+  			<!-- other methods  -->
+		    <tx:method name="*" read-only="true"/>
+  		</tx:attributes>
+  	</tx:advice>
+  	<aop:config>
+  		<aop:pointcut id="serviceOperation" expression="execution(* net.huosen.msg.service..*.*(..))"/>
+  		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
+  	</aop:config>
 </beans>
