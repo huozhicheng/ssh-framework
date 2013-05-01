@@ -4,7 +4,9 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 	<package name="admin" namespace="/admin" extends="struts-default">
-		
+		<action name="userList" class="userAction" method="findAll">
+            <result>/admin/user.jsp</result>
+        </action>
 	</package>
 
 </struts>

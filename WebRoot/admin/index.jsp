@@ -1,9 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
 <!DOCTYPE HTML>
 <html>
   <head>
@@ -39,6 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		.nav-header {
 			font-size: 14px;
 		}
+		.pagination{
+			margin: 0px 0px;
+		}
     </style>
   </head>
   
@@ -47,249 +49,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="row-fluid">
 		<div class="span12">
 			<!-- 头部开始 -->
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="header">
-						<p>H-Blog管理中心</p>
-					</div>
-				</div>
-			</div>
+			<jsp:include page="/admin/top.jsp" />
 			<!-- 头部结束 -->
 			<!-- 内容开始 -->
 			<div class="row-fluid">
 				<div style="margin: 10px 10px 10px;">
 					<!-- 左侧菜单开始 -->
-					<div class="span2">
-						<!--Sidebar content-->
-						<ul class="nav nav-list well">
-							<li class="nav-header"><i class="icon-book"></i> 文章管理</li>
-							<li class="active">
-								<a href="#"><i class="icon-list-alt"></i> 所有文章</a>
-							</li>
-							<li>
-								<a href="#"><i class="icon-pencil"></i> 写文章</a>
-							</li>
-							<li>
-								<a href="#"><i class="icon-list"></i> 分类目录</a>
-							</li>
-							<li>
-								<a href="#"><i class="icon-tags"></i> 标签</a>
-							</li>
-							<li class="divider"></li>
-							<li class="nav-header"><i class="icon-user"></i> 个人设置</li>
-							<li>
-								<a href="#"><i class="icon-cog"></i> 个人资料</a>
-							</li>
-							<li>
-								<a href="#"><i class="icon-lock"></i> 密码修改</a>
-							</li>
-							<li class="divider"></li>
-							<li class="nav-header"><i class="icon-wrench"></i> 系统设置</li>
-							<li>
-								<a href="#"><i class="icon-cog"></i> 基本设置</a>
-							</li>
-						</ul>
-						<div class="well" style="margin-top: 20px">
-							<p>
-								<a href="http://weibo.com/22817237" target="_blank"><span class="badge badge-info">Weibo</span></a>
-								<a href="https://github.com/huozhicheng/H-Blog" target="_blank"><span class="badge badge-info">Github</span></a>
-							</p>
-							<p>Powered by <span class="label label-success">H-Blog</span></p>
-						</div>
-					</div>
+					<jsp:include page="/admin/left.jsp"/>
 					<!-- 左侧菜单结束 -->
 					<!-- 右侧内容开始 -->
-					<div class="span10">
-						<!--Body content-->
-						<div>
-							<ul class="breadcrumb">
-								<li>
-									<a href="#">首页</a> <span class="divider">/</span>
-								</li>
-								<li>
-									<a href="#">文章管理</a> <span class="divider">/</span>
-								</li>
-								<li class="active">所有文章</li>
-							</ul>
-							<table class="table table-bordered table-hover">
-								<thead>
-									<tr>
-										<th><input type="checkbox"></th>
-										<th>编号</th>
-										<th>标题</th>
-										<th>分类</th>
-										<th>日期</th>
-										<th>作者</th>
-										<th style="text-align: center;">操作</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>1</td>
-										<td><a href="#">Java垃圾收集机制</a></td>
-										<td>Java</td>
-										<td>2013-04-18</td>
-										<td>Horrion</td>
-										<td style="text-align: center;">
-											<div class="btn-group">
-												<a href="#" title="查看" class="btn btn-small"><i class="icon-eye-open"></i></a>
-												<a href="#" title="编辑" class="btn btn-small"><i class="icon-edit"></i></a>
-												<a href="#" title="删除" class="btn btn-small"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>2</td>
-										<td>C#开发入门</td>
-										<td>C#</td>
-										<td>2013-04-17</td>
-										<td>Horrion</td>
-										<td style="text-align: center;">
-											<div class="btn-group">
-												<a href="#" title="查看" class="btn btn-small"><i class="icon-eye-open"></i></a>
-												<a href="#" title="编辑" class="btn btn-small"><i class="icon-edit"></i></a>
-												<a href="#" title="删除" class="btn btn-small"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>3</td>
-										<td>Python 开发基础</td>
-										<td>Python</td>
-										<td>2013-04-16</td>
-										<td>Horrion</td>
-										<td style="text-align: center;">
-											<div class="btn-group">
-												<a href="#" title="查看" class="btn btn-small"><i class="icon-eye-open"></i></a>
-												<a href="#" title="编辑" class="btn btn-small"><i class="icon-edit"></i></a>
-												<a href="#" title="删除" class="btn btn-small"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>4</td>
-										<td>Python 开发基础</td>
-										<td>Python</td>
-										<td>2013-04-16</td>
-										<td>Horrion</td>
-										<td style="text-align: center;">
-											<div class="btn-group">
-												<a href="#" title="查看" class="btn btn-small"><i class="icon-eye-open"></i></a>
-												<a href="#" title="编辑" class="btn btn-small"><i class="icon-edit"></i></a>
-												<a href="#" title="删除" class="btn btn-small"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>5</td>
-										<td>Python 开发基础</td>
-										<td>Python</td>
-										<td>2013-04-16</td>
-										<td>Horrion</td>
-										<td style="text-align: center;">
-											<div class="btn-group">
-												<a href="#" title="查看" class="btn btn-small"><i class="icon-eye-open"></i></a>
-												<a href="#" title="编辑" class="btn btn-small"><i class="icon-edit"></i></a>
-												<a href="#" title="删除" class="btn btn-small"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>6</td>
-										<td>Python 开发基础</td>
-										<td>Python</td>
-										<td>2013-04-16</td>
-										<td>Horrion</td>
-										<td style="text-align: center;">
-											<div class="btn-group">
-												<a href="#" title="查看" class="btn btn-small"><i class="icon-eye-open"></i></a>
-												<a href="#" title="编辑" class="btn btn-small"><i class="icon-edit"></i></a>
-												<a href="#" title="删除" class="btn btn-small"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>7</td>
-										<td>Python 开发基础</td>
-										<td>Python</td>
-										<td>2013-04-16</td>
-										<td>Horrion</td>
-										<td style="text-align: center;">
-											<div class="btn-group">
-												<a href="#" title="查看" class="btn btn-small"><i class="icon-eye-open"></i></a>
-												<a href="#" title="编辑" class="btn btn-small"><i class="icon-edit"></i></a>
-												<a href="#" title="删除" class="btn btn-small"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>8</td>
-										<td>Python 开发基础</td>
-										<td>Python</td>
-										<td>2013-04-16</td>
-										<td>Horrion</td>
-										<td style="text-align: center;">
-											<div class="btn-group">
-												<a href="#" title="查看" class="btn btn-small"><i class="icon-eye-open"></i></a>
-												<a href="#" title="编辑" class="btn btn-small"><i class="icon-edit"></i></a>
-												<a href="#" title="删除" class="btn btn-small"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>9</td>
-										<td>Python 开发基础</td>
-										<td>Python</td>
-										<td>2013-04-16</td>
-										<td>Horrion</td>
-										<td style="text-align: center;">
-											<div class="btn-group">
-												<a href="#" title="查看" class="btn btn-small"><i class="icon-eye-open"></i></a>
-												<a href="#" title="编辑" class="btn btn-small"><i class="icon-edit"></i></a>
-												<a href="#" title="删除" class="btn btn-small"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td><input type="checkbox"></td>
-										<td>10</td>
-										<td>Python 开发基础</td>
-										<td>Python</td>
-										<td>2013-04-16</td>
-										<td>Horrion</td>
-										<td style="text-align: center;">
-											<div class="btn-group">
-												<a href="#" title="查看" class="btn btn-small"><i class="icon-eye-open"></i></a>
-												<a href="#" title="编辑" class="btn btn-small"><i class="icon-edit"></i></a>
-												<a href="#" title="删除" class="btn btn-small"><i class="icon-trash"></i></a>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							<!-- 分页开始 -->
-							<div class="pagination pagination-right">
-								<ul>
-									<li class="disabled"><a href="#">&laquo;</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&raquo;</a></li>
-								</ul>
-							</div>
-							<!-- 分页结束 -->
-						</div>
+					<div class="span10" style="height: 100%;">
+					<iframe id="iframe-main" name="main" width="100%" height="565px;" border="0" frameborder="0" src="admin/article.jsp"></iframe>
 					</div>
 					<!-- 右侧内容结束 -->
 				</div>
