@@ -23,21 +23,6 @@
             <exception-mapping exception="java.lang.Exception" result="error"/>
         </global-exception-mappings>
         
-        
-		<!-- 按名称搜索-->
-		<action name="search" class="userAction" method="findByName">
-			<result name="success">/welcome.jsp</result>
-		</action>
-		<!-- 下面三个action处理前台传过来的增删改请求，然后redirect回主页 -->
-		<action name="handleinseart" class="userAction" method="inseart">
-			<result name="success" type="redirect">/</result>
-		</action>
-		<action name="handleupdate" class="userAction" method="update">
-			<result name="success" type="redirect">/</result>
-		</action>
-		<action name="handledelete" class="userAction" method="delete">
-			<result name="success" type="redirect">/</result>
-		</action>
 		<action name="index" class="userAction" method="findAll">
             <result>/welcome.jsp</result>
         </action>

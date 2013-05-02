@@ -7,6 +7,21 @@
 		<action name="userList" class="userAction" method="findAll">
             <result>/admin/user.jsp</result>
         </action>
+        <!-- 按名称搜索-->
+		<action name="search" class="userAction" method="findByName">
+			<result name="success">/welcome.jsp</result>
+		</action>
+		<!-- 下面三个action处理前台传过来的增删改请求，然后redirect回主页 -->
+		<action name="handleinseart" class="userAction" method="inseart">
+			<result name="success" type="redirect">/admin/userList</result>
+		</action>
+		<action name="handleupdate" class="userAction" method="update">
+			<result name="success" type="redirect">/admin/userList</result>
+		</action>
+		<action name="handledelete" class="userAction" method="delete">
+			<result name="success" type="redirect">/admin/userList</result>
+		</action>
+        
 	</package>
 
 </struts>

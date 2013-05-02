@@ -25,6 +25,13 @@
 		border-radius: 4px;
 	}
     </style>
+    <script type="text/javascript">
+	    function deleteUser(obj){
+	    	var p=$(obj).parents("tr");
+	    	var id=p.find("td[name='id']").text();
+	    	window.location="handledelete?user.id="+id;
+	    }
+    </script>
 </head>
 
 <body>
@@ -37,7 +44,7 @@
 			<li class="active">所有用户</li>
 		</ul>
 		<div class="background-css">
-			<button class="btn btn-primary" type="button">添加用户</button>
+			<a href="<%=contextPath %>/admin/addUser.jsp" target="main" class="btn btn-primary btn-small">添加用户</a>
 		</div>
 		<table class="table table-bordered table-hover">
 			<thead>
@@ -61,8 +68,8 @@
 					<td name="sex"><s:property value="#u.sex"/></td>
 					<td name="age"><s:property value="#u.age"/></td>
 					<td>
-						<a href="javascript:void(0)" onclick="deleteUser(this)">delete</a>|
-						<a href="javascript:void(0)" onclick="updateUser(this)">update</a>
+						<a href="javascript:void(0)" class="btn btn-small btn-primary">更新</a>
+						<a href="#delModal" class="btn btn-small btn-danger" data-toggle="modal">刪除</a>
 					</td>
 				</tr>
 			</s:iterator>
@@ -81,6 +88,20 @@
 			</ul>
 		</div>
 		<!-- 分页结束 -->
+	</div>
+	<!-- Modal -->
+	<div id="delModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3 id="myModalLabel">刪除提示</h3>
+		</div>
+		<div class="modal-body">
+			<p>确定要删除当前用户吗？</p>
+		</div>
+		<div class="modal-footer">
+			<button class="btn btn-primary" onclick="">确定</button>
+			<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+		</div>
 	</div>
 </body>
 </html>
