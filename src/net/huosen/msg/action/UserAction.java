@@ -24,6 +24,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UserAction extends ActionSupport{
 
 	private static final long serialVersionUID = -7574227471454774126L;
+	private int userId;
 	private User user;
 	private List<User> list;
 	@Resource(name="userService")
@@ -54,6 +55,15 @@ public class UserAction extends ActionSupport{
 		return "success";
 	}
 	
+	public String findById(){
+		user = service.findById(userId);
+		return SUCCESS;
+	}
+	
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
 	public User getUser() {
 		return user;
 	}

@@ -1,9 +1,17 @@
 package net.huosen.msg.dao.impl;
 
+import java.sql.SQLException;
 import java.util.List;
+
 import javax.annotation.Resource;
+
 import net.huosen.msg.dao.UserDao;
 import net.huosen.msg.model.User;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Component;
 /**
@@ -38,10 +46,22 @@ public class UserDaoImpl implements UserDao {
 	/* (non-Javadoc)
 	 * @see cn.net.msg.dao.impl.UserDao#findById(java.lang.String)
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> findAll(){
-		@SuppressWarnings("unchecked")
-		List<User> list=template.find ( "from User" );
+		final String hql = "from User";
+		final int offset = 0;
+		final int length = 10;
+		List<User> list = template.executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+			throws HibernateException, SQLException {
+				Query query = session.createQuery(hql);
+				query.setFirstResult(offset);
+				query.setMaxResults(length);
+				List list = query.list();
+				return list;
+			}
+		});
 		return list;
 	}
 	

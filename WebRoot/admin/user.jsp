@@ -26,9 +26,17 @@
 	}
     </style>
     <script type="text/javascript">
-	    function deleteUser(obj){
+	    function doDeleteUser(obj){
 	    	var p=$(obj).parents("tr");
 	    	var id=p.find("td[name='id']").text();
+	    	var name=p.find("td[name='name']").text();
+	    	$("#delUserId").html(id);
+	    	$("#delUserName").html(name);
+	    	$('#delModal').modal('show');
+	    }
+	    function deleteUser(){
+	    	var id = $("#delUserId").html();
+	    	$('#delModal').modal('hide');
 	    	window.location="handledelete?user.id="+id;
 	    }
     </script>
@@ -50,7 +58,7 @@
 			<thead>
 				<tr>
 					<th><input type="checkbox"></th>
-					<th>编号</th>
+					<th>序号</th>
 					<th>用户编号</th>
 					<th>用户名称</th>
 					<th>用户性别</th>
@@ -59,17 +67,17 @@
 				</tr>
 			</thead>
 			<tbody>
-			<s:iterator value="list" id="u">
+			<s:iterator value="list" id="u" status="uSequence">
 				<tr>
 					<td><input type="checkbox"></td>
-					<td name="id"><s:property value="#u.id"/></td>
+					<td><s:property value="#uSequence.count"/></td>
 					<td name="id"><s:property value="#u.id"/></td>
 					<td name="name"><s:property value="#u.name"/></td>
 					<td name="sex"><s:property value="#u.sex"/></td>
 					<td name="age"><s:property value="#u.age"/></td>
 					<td>
-						<a href="javascript:void(0)" class="btn btn-small btn-primary">更新</a>
-						<a href="#delModal" class="btn btn-small btn-danger" data-toggle="modal">刪除</a>
+						<a href="admin/doUpdateUser?userId=<s:property value="#u.id"/>" class="btn btn-small btn-primary">更新</a>
+						<button class="btn btn-small btn-danger" onclick="doDeleteUser(this)">刪除</button>
 					</td>
 				</tr>
 			</s:iterator>
@@ -93,13 +101,16 @@
 	<div id="delModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3 id="myModalLabel">刪除提示</h3>
+			<h3 id="myModalLabel">删除提示</h3>
 		</div>
 		<div class="modal-body">
-			<p>确定要删除当前用户吗？</p>
+			<p>确定要删除
+				<span class="label label-warning">用户编号为"<lable id="delUserId"></lable>"</span>
+				<span class="label label-warning">用户姓名为"<lable id="delUserName"></lable>"</span>的用户吗？
+			</p>
 		</div>
 		<div class="modal-footer">
-			<button class="btn btn-primary" onclick="">确定</button>
+			<button class="btn btn-primary" onclick="deleteUser()">确定</button>
 			<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
 		</div>
 	</div>

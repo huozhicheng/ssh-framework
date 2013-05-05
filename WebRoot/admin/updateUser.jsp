@@ -25,19 +25,20 @@
 		<ul class="breadcrumb">
 			<li><a href="#">首页</a> <span class="divider">/</span></li>
 			<li><a href="#">用户管理</a> <span class="divider">/</span></li>
-			<li class="active">添加用户</li>
+			<li class="active">更新用户</li>
 		</ul>
-		<form class="form-horizontal well" action="<%=contextPath %>/admin/handleinseart" method="post">
+		<form class="form-horizontal well" action="<%=contextPath %>/admin/handleupdate" method="post">
 			<div class="control-group">
 				<label class="control-label" for="userName">用户名：</label>
 				<div class="controls">
-					<input type="text" name="user.name" id="userName" placeholder="请输入您的用户名">
+					<input type="hidden" name="user.id" value="<s:property value="#request.user.id"/>">
+					<input type="text" name="user.name" id="userName" placeholder="请输入您的用户名" value="<s:property value="#request.user.name"/>">
 				</div>
 			</div>
 			<div class="control-group">
 				<label class="control-label" for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
 				<div class="controls">
-					<input type="password" id="password" placeholder="请输入你的密码">
+					<input type="password" id="password" placeholder="请输入你的密码" value="<s:property value="#request.user.password"/>">
 				</div>
 			</div>
 			<div class="control-group">
@@ -54,12 +55,12 @@
 			<div class="control-group">
 				<label class="control-label" for="inputPassword">年&nbsp;&nbsp;&nbsp;&nbsp;龄：</label>
 				<div class="controls">
-						<input type="text" name="user.age" placeholder="请输入您的年龄">
+						<input type="text" name="user.age" placeholder="请输入您的年龄" value="<s:property value="#request.user.age"/>">
 				</div>
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<button type="submit" class="btn btn-primary">保存</button>
+					<button type="submit" class="btn btn-primary">更新</button>
 					<button type="reset" class="btn">重置</button>
 					<a class="btn btn-info" href="admin/userList">返回</a>
 				</div>
