@@ -4,10 +4,10 @@
 	<ul class="nav nav-list well" id="sidebar-ul">
 		<li class="nav-header"><i class="icon-book"></i> 文章管理</li>
 		<li class="active" onclick="addCl(this)">
-			<a href="admin/article.jsp" target="main"><i class="icon-list-alt"></i>所有文章</a>
+			<a href="admin/articleList" target="main"><i class="icon-list-alt"></i>所有文章</a>
 		</li>
 		<li onclick="addCl(this)">
-			<a href="admin/user.jsp" target="main"><i class="icon-pencil"></i> 写文章</a>
+			<a href="admin/article/articleAdd.jsp" target="main"><i class="icon-pencil"></i> 写文章</a>
 		</li>
 		<li onclick="addCl(this)">
 			<a href="javascript:void(0)"><i class="icon-list"></i> 分类目录</a>

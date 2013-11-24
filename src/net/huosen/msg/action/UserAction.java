@@ -80,46 +80,59 @@ public class UserAction extends ActionSupport{
 	 * 校验插入数据的操作
 	 */
 	public void validateInseart(){
-		if(null==user.getName()||"".equals(user.getName().trim())) 
-			this.addFieldError("name", "name can`t be null");
-		else if(16<user.getName().trim().length()) 
-			this.addFieldError("name", "name is limited in 16 characters");
+		//用户名校验
+		if(null == user.getName() || "".equals(user.getName().trim())){
+			this.addFieldError("name", "用户名不能为空！");
+		}else if(16 < user.getName().trim().length()){
+			this.addFieldError("name", "用户名不能超过16位！");
+		}
 		
-		if(0>user.getAge()||150<user.getAge())
-			this.addFieldError("age", "age is limited between 0~150");
-		
-		if(null==user.getSex()||((!user.getSex().equals("man"))&&(!user.getSex().equals("woman"))))
-			this.addFieldError("sex", "value of sex is unvalid");
+		if(0 > user.getAge() || 150 < user.getAge()){
+			this.addFieldError("age", "年龄只能在 0~150之间！");
+		}
+		if(null == user.getSex() || ( (!user.getSex().equals("man")) && (!user.getSex().equals("woman")) )){
+			this.addFieldError("sex", "请选择性别！");
+		}
 	}
 	/*
 	 * 校验更新数据的操作
 	 */
 	public void validateUpdate(){
-		if(100000>user.getId())
-			this.addFieldError("id", "value of id is unvalid");
+		if(100000 > user.getId()){
+			this.addFieldError("id", "无效的用户编号！");
+		}
 		
-		if(null==user.getName()||"".equals(user.getName().trim())) 
-			this.addFieldError("name", "name can`t be null");
-		else if(16<user.getName().trim().length()) 
-			this.addFieldError("name", "name is limited in 16 characters");
+		if(null == user.getName() || "".equals(user.getName().trim())){
+			this.addFieldError("name", "用户名不能为空！");
+		}else if(16 < user.getName().trim().length()) {
+			this.addFieldError("name", "用户名不能超过16位！");
+		}
 		
-		if(0>user.getAge()||150<user.getAge())
-			this.addFieldError("age", "age is limited between 0~150");
+		if(0 > user.getAge() || 150 < user.getAge()){
+			this.addFieldError("age", "年龄只能在 0~150之间！");
+		}
 		
-		if(null==user.getSex()||((!user.getSex().equals("man"))&&(!user.getSex().equals("woman"))))
-			this.addFieldError("sex", "value of sex is unvalid");
+		if(null == user.getSex() || ( (!user.getSex().equals("man")) && (!user.getSex().equals("woman")) )){
+			this.addFieldError("sex", "请选择性别！");
+		}
 	}
 	/*
 	 * 校验删除数据的操作
 	 */
 	public void validateDelete(){
-		if(100000>user.getId())
-			this.addFieldError("id", "value of id is unvalid");
+		if(100000 > user.getId()){
+			this.addFieldError("id", "无效的用户编号！");
+		}
 	}
+	
+	/*
+	 * 根据用户名查找校验
+	 */
 	public void validateFindByName(){
-		if(null==user.getName()||"".equals(user.getName().trim())) 
-			this.addFieldError("name", "name can`t be null");
-		else if(16<user.getName().trim().length()) 
-			this.addFieldError("name", "name is limited in 16 characters");
+		if(null == user.getName() || "".equals(user.getName().trim())){
+			this.addFieldError("name", "用户名不能为空！");
+		}else if(16 < user.getName().trim().length()){
+			this.addFieldError("name", "用户名不能超过16位！");
+		}
 	}
 }

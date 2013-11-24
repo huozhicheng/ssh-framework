@@ -37,7 +37,7 @@
 			<div class="control-group">
 				<label class="control-label" for="password">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
 				<div class="controls">
-					<input type="password" id="password" placeholder="请输入你的密码">
+					<input type="password" name="user.password" id="password" placeholder="请输入你的密码">
 				</div>
 			</div>
 			<div class="control-group">

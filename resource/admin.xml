@@ -5,12 +5,22 @@
 <struts>
 	<package name="admin" namespace="/admin" extends="struts-default">
 		<action name="userList" class="userAction" method="findAll">
-            <result>/admin/user.jsp</result>
+            <result>/admin/user/user.jsp</result>
         </action>
         
         <action name="doUpdateUser" class="userAction" method="findById">
-        	<result>/admin/updateUser.jsp</result>
+        	<result>/admin/user/updateUser.jsp</result>
         </action>
+        
+        <!-- 文章管理 -->
+        <action name="articleList" class="articleAction" method="list">
+        	<result name="success">/admin/article/article.jsp</result>
+        </action>
+        <action name="article*" class="articleAction" method="{1}">
+        	<result name="success" type="redirect">/admin/articleList</result>
+        	<result name="input">/error.jsp</result>
+        </action>
+       
         
 		<!-- 下面三个action处理前台传过来的增删改请求，然后redirect回主页 -->
 		<action name="handle*" class="userAction" method="{1}">
