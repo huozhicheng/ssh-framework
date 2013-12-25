@@ -59,7 +59,7 @@
 					<!-- 左侧菜单结束 -->
 					<!-- 右侧内容开始 -->
 					<div class="span10" style="height: 100%;">
-					<iframe id="iframe-main" name="main" width="100%" height="100%" border="0" frameborder="0" src="admin/article/article.jsp"></iframe>
+					<iframe id="iframe-main" name="main" width="100%" height="100%" border="0" frameborder="0" src="admin/articleList"></iframe>
 					</div>
 					<!-- 右侧内容结束 -->
 				</div>
